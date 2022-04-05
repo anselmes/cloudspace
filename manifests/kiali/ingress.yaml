@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: kiali
-  namespace: istio-system
+  namespace: clos-lma
 spec:
   tls:
     - secretName: kiali-tls

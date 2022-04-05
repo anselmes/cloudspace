@@ -2,7 +2,7 @@ apiVersion: kiali.io/v1alpha1
 kind: Kiali
 metadata:
   name: kiali
-  namespace: istio-system
+  namespace: clos-lma
 spec:
   auth:
     strategy: "token"
@@ -16,7 +16,6 @@ spec:
     hostnames:
       - kiali.${OSH_FQDN}
   ingress:
-    class_name: istio
     enabled: true
     override_yaml:
       spec:

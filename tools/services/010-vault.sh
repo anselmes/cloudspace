@@ -5,10 +5,12 @@
 
 set -xe
 
+: ${VAULT_NAMESPACE:=clos-infra}
+
 # add vault
 helm upgrade -i vault vault \
   --repo https://helm.releases.hashicorp.com \
-  --namespace vault \
+  --namespace ${VAULT_NAMESPACE} \
   --create-namespace \
   --reuse-values \
   --set injector.metrics.enabled=true \
@@ -20,4 +22,18 @@ helm upgrade -i vault vault \
   --set server.auditStorage.enabled=true
 
 # add certificate
-envsubst < manifests/vault/certificate.yaml | kubectl apply -f -
+cat <<-eof | kubectl apply -f -
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: vault-cert
+  namespace: ${VAULT_NAMESPACE}
+spec:
+  secretName: vault-tls
+  commonName: vault.${OSH_FQDN}
+  dnsNames:
+    - vault.${OSH_FQDN}
+  issuerRef:
+    kind: ClusterIssuer
+    name: cloudflare
+eof

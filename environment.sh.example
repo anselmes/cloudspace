@@ -1,25 +1,31 @@
-#export CLOUDFLARE_API_TOKEN=""
-#export CLOUDFLARE_EMAIL=""
+#export OSH_DEPLOY_MULTINODE=True
 
-#export METALLB_ADDRESS_RANGE=xxx.xxx.xxx.240-xxx.xxx.xxx.254
+#export CONTAINER_DISTRO_NAME=ubuntu
+#export CONTAINER_DISTRO_VERSION=bionic
 
-#export FEATURE_GATES=tls
-#export DEPLOY_SEPARATE_PLACEMENT=yes
+#export NAME=
+#export DOMAIN=
+#export FQDN=${NAME}.${DOMAIN}
 
-#export SITE=""
-#export DOMAIN=""
-#export OSH_FQDN=${SITE}.${DOMAIN}
+#export KUBE_CONTROL_PLANE_ENDPOINT=${NAME}.api.${DOMAIN}
 
 #export CREATE_LOOPBACK_DEVICES_FOR_CEPH=false
 #export CEPH_OSD_DATA_DEVICE=/dev/sdb
 #export CEPH_OSD_DB_WAL_DEVICE=/dev/sdc
+#export CEPH_CLUSTER_ID=ceph
+#export CEPH_SECRET_NAME=pvc-ceph-conf-combined-storageclass
+#export CEPH_SECRET_NAMESPACE=ceph
+
+#export METALLB_ADDRESS_RANGE=172.16.100.240-172.16.100.254
+
+#export CLOUDFLARE_API_TOKEN=""
+#export CLOUDFLARE_EMAIL=""
 
 #export VAULT_ADDR=https://vault.${OSH_FQDN}
 #export VAULT_TOKEN=""
-
 #export VAULT_TRANSIT_PATH=auth/transit
 
-#export KASTEN_EULA_COMPANY=${OSH_SITE}
+#export KASTEN_EULA_COMPANY=${SITE}
 #export KASTEN_EULA_EMAIL=administrator@${DOMAIN}
 
 #export S3_ENDPOINT=https://radosgw.${OSH_FQDN}
@@ -29,8 +35,10 @@
 #export S3_ACCESS_KEY=""
 #export S3_SECRET_KEY=""
 
-#export GITEA_APP_NAME=${OSH_SITE}
+#export GITEA_APP_NAME=${SITE}
 #export GITEA_ADMIN_PASSWORD=""
 #export GITEA_ADMIN_EMAIL=administrator@${DOMAIN}
 
 #export NEXUS_ADMIN_PASSWORD=""
+
+#export GH_POSTMAN_TOKEN=""

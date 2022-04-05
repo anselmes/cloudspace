@@ -5,10 +5,12 @@
 
 set -xe
 
+: ${JENKINS_NAMESPACE:=clos-pipelines}
+
 # add jenkins
 helm upgrade -i jenkins jenkins \
   --repo https://charts.jenkins.io \
-  --namespace pipelines \
+  --namespace ${JENKINS_NAMESPACE} \
   --create-namespace \
   --reuse-values \
   --set controller.ingress.enabled=true \
@@ -20,4 +22,18 @@ helm upgrade -i jenkins jenkins \
   --set backup.enabled=true
 
 # add certificate
-envsubst < manifests/jenkins/certificate.yaml | kubectl apply -f -
+cat <<-eof | kubectl apply -f -
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: jenkins-cert
+  namespace: ${JENKINS_NAMESPACE}
+spec:
+  secretName: jenkins-tls
+  commonName: jenkins.${OSH_FQDN}
+  dnsNames:
+    - jenkins.${OSH_FQDN}
+  issuerRef:
+    kind: ClusterIssuer
+    name: cloudflare
+eof

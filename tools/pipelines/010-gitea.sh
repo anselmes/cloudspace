@@ -5,9 +5,11 @@
 
 set -xe
 
+: ${GITEA_NAMESPACE:=clos-pipelines}
+
 # add gitea
 helm upgrade -i gitea gitea --repo https://dl.gitea.io/charts \
-  --namespace pipelines \
+  --namespace ${GITEA_NAMESPACE} \
   --create-namespace \
   --reuse-values \
   --set ingress.enabled=true \
@@ -21,15 +23,28 @@ helm upgrade -i gitea gitea --repo https://dl.gitea.io/charts \
   --set gitea.admin.password=${GITEA_ADMIN_PASSWORD} \
   --set gitea.admin.email=${GITEA_ADMIN_EMAIL} \
   --set gitea.metrics.enabled=true \
-  --set service.ssh.type=LoadBalancer \
   --set service.DISABLE_REGISTRATION=true \
   --set gitea.config.APP_NAME=${GITEA_APP_NAME} \
   --set gitea.config.RUN_MODE=prod \
   --set gitea.config.server.ROOT_URL=https://gitea.${OSH_FQDN}
 
 # add certificate
-envsubst < manifests/gitea/certificate.yaml | kubectl apply -f -
+cat <<-eof | kubectl apply -f -
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: gitea-cert
+  namespace: ${GITEA_NAMESPACE}
+spec:
+  secretName: gitea-tls
+  commonName: gitea.${OSH_FQDN}
+  dnsNames:
+    - gitea.${OSH_FQDN}
+  issuerRef:
+    kind: ClusterIssuer
+    name: cloudflare
+eof
 
 # annotate ssh service
-kubectl annotate svc -n pipelines gitea-ssh external-dns.alpha.kubernetes.io/hostname=git.${OSH_FQDN} --overwrite
-kubectl annotate svc -n pipelines gitea-ssh metallb.universe.tf/allow-shared-ip=default-ingress-ip --overwrite
+# kubectl annotate svc -n pipelines gitea-ssh external-dns.alpha.kubernetes.io/hostname=git.${OSH_FQDN} --overwrite
+# kubectl annotate svc -n pipelines gitea-ssh metallb.universe.tf/allow-shared-ip=default-ingress-ip --overwrite

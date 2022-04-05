@@ -2,7 +2,7 @@
 
 set -xe
 
-# TODO: fix and test
+# FIXME: fix and test
 
 function write_approle_role() {
   vault write auth/approle/role/$1 \

@@ -21,7 +21,7 @@ helm upgrade -i external-dns-cf external-dns \
   --set combineFQDNAnnotation=true \
   --set cloudflare.secretName=cloudflare-api-token \
   --set cloudflare.proxied=false \
-  --set sources="{crd,service,ingress,istio-gateway,istio-virtualservice}" \
+  --set sources="{crd,service,ingress}" \
   --set txtOwnerId=cloudflare \
   --set txtPrefix=cf-${SITE} \
   --set policy=sync \

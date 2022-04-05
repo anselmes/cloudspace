@@ -11,7 +11,7 @@ vault secrets enable ssh
 # enable userpass
 vault auth enable userpass
 
-# TODO: fix - add ca
+# FIXME: add ca
 # check default; if none, set to ca
 # create otp role
 vault write ssh/roles/default \
