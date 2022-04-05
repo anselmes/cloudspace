@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: radosgw-istio
+  namespace: openstack
+spec:
+  tls:
+    - secretName: radosgw-tls
+      hosts:
+        - radosgw.${OSH_FQDN}
+  rules:
+    - host: radosgw.${OSH_FQDN}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ceph-rgw
+                port:
+                  name: ceph-rgw

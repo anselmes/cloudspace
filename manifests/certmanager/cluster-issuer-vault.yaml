@@ -1,0 +1,35 @@
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: vault-approle
+#   namespace: cert-manager
+# stringData:
+#   secret-id: ${VAULT_SECRET_ID}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vault-token
+  namespace: cert-manager
+stringData:
+  token: ${VAULT_TOKEN}
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: vault
+spec:
+  vault:
+    server: ${VAULT_ADDR}
+    path: pki/sign/default
+    caBundle: ""
+    auth:
+      tokenSecretRef:
+        name: vault-token
+        key: token
+      # appRole:
+      #   path: approle
+      #   roleId: ${VAULT_APPROLE_ID}
+      #   secretRef:
+      #     name: vault-approle
+      #     key: secret-id

@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: keystone-istio
+  namespace: openstack
+spec:
+  tls:
+    - secretName: keystone-tls
+      hosts:
+        - keystone.${OSH_FQDN}
+  rules:
+    - host: keystone.${OSH_FQDN}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: keystone-api
+                port:
+                  name: ks-pub
