@@ -6,7 +6,8 @@
 set -xe
 
 # add vault
-helm upgrade -i vault hashicorp/vault \
+helm upgrade -i vault vault \
+  --repo https://helm.releases.hashicorp.com \
   --namespace vault \
   --create-namespace \
   --reuse-values \
