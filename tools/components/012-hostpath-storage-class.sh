@@ -4,9 +4,9 @@
 # if not, install
 
 set -xe
-cd /tmp
 
 # fetch repo
+cd /tmp
 git clone https://github.com/kubernetes-csi/csi-driver-host-path.git
 cd csi-driver-host-path
 
@@ -15,7 +15,7 @@ deploy/kubernetes-latest/deploy.sh
 kubectl apply -f examples/csi-storageclass.yaml
 
 # TODO: fix - snapshot class not deployed
-sed -e 's/v1/v1beta1/g' deploy/kubernetes-1.21/hostpath/csi-hostpath-snapshotclass.yaml | kubectl apply -f -
+kubectl apply -f deploy/kubernetes-1.21/hostpath/csi-hostpath-snapshotclass.yaml
 
 # TODO: set default storage class
 # - check if hostpath storage class

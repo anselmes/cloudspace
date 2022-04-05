@@ -14,4 +14,6 @@ kubectl apply -f manifests/istio/operator.yaml
 # deploy istio
 sleep 30
 kubectl apply -f manifests/istio/istio.yaml
+
+sleep 15
 kubectl annotate svc -n istio-system istio-ingressgateway metallb.universe.tf/allow-shared-ip=default-ingress-ip --overwrite

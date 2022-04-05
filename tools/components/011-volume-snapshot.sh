@@ -5,12 +5,15 @@ set -xe
 # TODO: check if snapshot class crd and controller already exists
 # if crd and not controller, deploy only controller
 # if not deploy both
+# Change to the latest supported snapshotter version
+
+# feth repo
+cd /tmp
+git clone https://github.com/kubernetes-csi/external-snapshotter.git
+cd external-snapshotter
 
 # add crd
-kubectl create -f  https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
-kubectl create -f  https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
-kubectl create -f  https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
+kustomize build client/config/crd | kubectl apply -f -
 
 # add controller
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
+kustomize build deploy/kubernetes/snapshot-controller | kubectl apply -n kube-system -f -
