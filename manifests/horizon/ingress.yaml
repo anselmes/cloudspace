@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: horizon-istio
+  namespace: openstack
+spec:
+  tls:
+    - secretName: horizon-tls
+      hosts:
+        - horizon.${OSH_FQDN}
+  rules:
+    - host: horizon.${OSH_FQDN}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: horizon-int
+                port:
+                  name: web
