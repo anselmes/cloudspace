@@ -23,6 +23,6 @@ helm upgrade -i external-dns-cf external-dns \
   --set cloudflare.proxied=false \
   --set sources="{crd,service,ingress}" \
   --set txtOwnerId=cloudflare \
-  --set txtPrefix=cf-${SITE} \
+  --set txtPrefix=cf-${NAME}- \
   --set policy=sync \
   --set metrics.enabled=true

@@ -43,5 +43,5 @@ Temporary Items
 # Others
 *.pem
 
-environment.sh
-~environment.sh.example
+.*.env
+~example.env

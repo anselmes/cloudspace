@@ -12,14 +12,3 @@ path "sys/auth/approle/*" {
 path "auth/approle/*" {
   capabilities = [ "create", "read", "update", "delete", "list" ]
 }
-
-# Write ACL policies
-path "sys/policies/acl/*" {
-  capabilities = [ "create", "read", "update", "delete", "list" ]
-}
-
-# Write test data
-# Set the path to "secret/data/mysql/*" if you are running `kv-v2`
-path "secret/*" {
-  capabilities = [ "create", "read", "update", "delete", "list" ]
-}

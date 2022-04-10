@@ -1,0 +1,24 @@
+# Create policies to permit apps to read secrets
+path "sys/policies/acl/*" {
+  capabilities = [ "create", "read", "update", "delete", "list" ]
+}
+
+# Create tokens for verification & test
+path "auth/token/create" {
+  capabilities = [ "create", "update", "sudo" ]
+}
+
+# Write ACL policies
+path "sys/policies/acl/*" {
+  capabilities = [ "create", "read", "update", "delete", "list" ]
+}
+
+# Write data
+path "secret/*" {
+  capabilities = [ "create", "read", "update", "delete", "list" ]
+}
+
+# To create the default user
+path "auth/userpass/users/*" {
+  capabilities = [ "create", "update" ]
+}

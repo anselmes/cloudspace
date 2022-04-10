@@ -17,8 +17,3 @@ path "sys/auth/userpass" {
 path "sys/policies/acl/ssh-user" {
   capabilities = [ "read", "update" ]
 }
-
-# To create the default user
-path "auth/userpass/users/*" {
-  capabilities = [ "create", "update" ]
-}
