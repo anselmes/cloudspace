@@ -45,3 +45,7 @@ Temporary Items
 
 .env
 ~example.env
+
+secrets/gpg
+secrets/ssh
+secrets/*.json
