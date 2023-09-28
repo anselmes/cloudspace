@@ -15,13 +15,34 @@ documentation:
   - docs/*/**
   - README.md
 
+# Add 'scripts' label to any changes in the 'scripts' directory
+scripts:
+  - scripts/*
+  - scripts/*/**
+
+# Add 'tooling' label to any changes in the 'tools' directory
+tooling:
+  - tools/*
+  - tools/*/**
+
+# Add 'build' label to any changes in the 'build' directory
+build:
+  - build/*
+  - build/*/**
+  - .github/workflows/build.yml
+
 # Add 'deployment' label to any changes in the 'deployment' directory
 deployment:
   - deployment/*
   - deployment/*/**
   - .github/workflows/deploy.yml
 
-# Add 'tooling' label to any changes in the 'tools' directory
-tooling:
-  - tools/*
-  - tools/*/**
+# Add 'source' label to any changes in the 'src' directory
+source:
+  - src/*
+  - src/*/**
+
+# Add 'test' label to any changes in the 'test' directory
+test:
+  - test/*
+  - test/*/**

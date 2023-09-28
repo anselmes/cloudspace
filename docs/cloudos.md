@@ -19,3 +19,7 @@
 - chal (compiler hal)
 - rhal (repl hal)
 - csim (simulator)
+
+---
+
+Copyright (c) 2023 Schubert Anselme. All rights reserved.
