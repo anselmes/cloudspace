@@ -14,7 +14,6 @@ TOKEN_POLICY_NAMES=pki-admin
 # export vault approle role-id
 #tools/components/020-vault-approle.sh read_approle_role ${ROLE_NAME}
 
-
 # export vault approle secret-id
 #tools/components/020-vault-approle.sh read_approle_secret_id ${ROLE_NAME}
 

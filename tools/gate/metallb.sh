@@ -11,9 +11,9 @@ set -xe
 #kubectl diff -f - -n kube-system
 
 # actually apply the changes, returns nonzero returncode on errors only
-kubectl get configmap kube-proxy -n kube-system -o yaml | \
-sed -e "s/strictARP: false/strictARP: true/" | \
-kubectl apply -f - -n kube-system
+kubectl get configmap kube-proxy -n kube-system -o yaml |
+  sed -e "s/strictARP: false/strictARP: true/" |
+  kubectl apply -f - -n kube-system
 
 # deploy metallb
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.12.1/manifests/namespace.yaml

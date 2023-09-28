@@ -9,7 +9,7 @@ CURRENT_DIR=$(pwd)
 
 # fetch repo
 cd /tmp
-[ !-d /tmp/csi-driver-host-path ] &&  it clone https://github.com/kubernetes-csi/csi-driver-host-path.git
+[ !-d /tmp/csi-driver-host-path ] && it clone https://github.com/kubernetes-csi/csi-driver-host-path.git
 cd csi-driver-host-path
 
 # add driver and storage class

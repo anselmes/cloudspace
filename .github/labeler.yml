@@ -1,0 +1,27 @@
+# Add 'repo' label to any root file changes
+repo:
+  - "*"
+
+# Add 'github-actions' label to any changes in the '.github' directory
+github-actions:
+  - .github/workflows/*
+  - .github/workflows/*/**
+  - .github/dependabot.yml
+  - .github/dependabot.yml/**
+
+# Add 'documentation' label to any changes in the 'docs' directory
+documentation:
+  - docs/*
+  - docs/*/**
+  - README.md
+
+# Add 'deployment' label to any changes in the 'deployment' directory
+deployment:
+  - deployment/*
+  - deployment/*/**
+  - .github/workflows/deploy.yml
+
+# Add 'tooling' label to any changes in the 'tools' directory
+tooling:
+  - tools/*
+  - tools/*/**

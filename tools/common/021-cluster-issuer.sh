@@ -10,4 +10,4 @@ set -xe
 kubectl apply -f manifests/certmanager/cluster-issuer-self-signed.yaml
 
 # add cloudflare cluster-issuer
-envsubst < manifests/certmanager/cluster-issuer-cloudflare.yaml | kubectl apply -f -
+envsubst <manifests/certmanager/cluster-issuer-cloudflare.yaml | kubectl apply -f -

@@ -6,7 +6,7 @@ set -xe
 # if not, install
 
 # create cloudflare api token secret
-envsubst < manifests/externaldns/cloudflare-api-token.yaml | kubectl apply -f -
+envsubst <manifests/externaldns/cloudflare-api-token.yaml | kubectl apply -f -
 
 # TODO: provider choice: cloudflare|infoblox|rfc2136
 # only include crd if not already present
