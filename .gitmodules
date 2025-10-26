@@ -10,3 +10,6 @@
 [submodule "core"]
 	path = core
 	url = git@github.com:anselmes/ip.git
+[submodule "lib/corelib"]
+	path = lib/corelib
+	url = git@github.com:anselmes/project-eitry.git
