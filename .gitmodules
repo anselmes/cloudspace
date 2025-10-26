@@ -1,0 +1,6 @@
+[submodule "modules/cloudconfig"]
+	path = modules/cloudconfig
+	url = git@github.com:anselmes/config.git
+[submodule "modules/cloudutil"]
+	path = modules/cloudutil
+	url = git@github.com:anselmes/toolchain.git
