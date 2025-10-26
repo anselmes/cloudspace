@@ -16,3 +16,9 @@
 [submodule "modules/clact"]
 	path = modules/clact
 	url = git@github.com:anselmes/clact.git
+[submodule "modules/images"]
+	path = modules/images
+	url = git@github.com:anselmes/images.git
+[submodule "modules/packages"]
+	path = modules/packages
+	url = git@github.com:anselmes/charts.git
