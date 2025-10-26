@@ -4,3 +4,6 @@
 [submodule "modules/clutil"]
 	path = modules/clutil
 	url = git@github.com:anselmes/toolchain.git
+[submodule "templates"]
+	path = templates
+	url = git@github.com:anselmes/templates.git
