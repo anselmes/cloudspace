@@ -1,8 +1,8 @@
-[submodule "modules/clconfig"]
-	path = modules/clconfig
+[submodule "modules/coreconfig"]
+	path = modules/coreconfig
 	url = git@github.com:anselmes/config.git
-[submodule "modules/clutil"]
-	path = modules/clutil
+[submodule "modules/coreutil"]
+	path = modules/coreutil
 	url = git@github.com:anselmes/toolchain.git
 [submodule "templates"]
 	path = templates
