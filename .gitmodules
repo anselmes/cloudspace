@@ -7,3 +7,6 @@
 [submodule "templates"]
 	path = templates
 	url = git@github.com:anselmes/templates.git
+[submodule "core"]
+	path = core
+	url = git@github.com:anselmes/ip.git
