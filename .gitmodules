@@ -13,3 +13,6 @@
 [submodule "lib/corelib"]
 	path = lib/corelib
 	url = git@github.com:anselmes/project-eitry.git
+[submodule "modules/clact"]
+	path = modules/clact
+	url = git@github.com:anselmes/clact.git
